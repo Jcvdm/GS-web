@@ -10,4 +10,24 @@ document.addEventListener('DOMContentLoaded', function() {
             // You can add AJAX submission or Netlify form handling here
         });
     }
-}); 
+});
+
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const menuLinks = document.querySelectorAll('.nav-menu a');
+
+    menuBtn.addEventListener('click', function() {
+        menuBtn.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+
+    // Close menu when clicking a link
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuBtn.classList.remove('open');
+            navMenu.classList.remove('open');
+        });
+    });
+});

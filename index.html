@@ -18,10 +18,16 @@
     <header>
         <div class="container">
             <h1>GrowthSpark</h1>
-            <nav>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-menu">
                 <ul>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#special-offer">Special Offer</a></li>
                 </ul>
             </nav>
         </div>
@@ -138,7 +144,7 @@
     </section>
 
     <!-- Special Offer Section -->
-    <section class="special-offer">
+    <section class="special-offer" id="special-offer">
         <div class="container">
             <div class="offer-content">
                 <div class="offer-badge">Limited Time Offer</div>
@@ -250,5 +256,6 @@
             popup.style.display = 'none';
         }
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
