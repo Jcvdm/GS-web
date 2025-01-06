@@ -709,6 +709,35 @@ section:hover,
   .hero {
     height: 70vh;
   }
+
+  /* Header mobile fixes */
+  header {
+    height: auto;
+    min-height: 80px;
+    padding: 1rem 0;
+  }
+
+  header .container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  header nav ul {
+    margin: 0;
+    gap: 1rem;
+  }
+
+  header nav a {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
 }
 
 @media (min-width: 2000px) {
