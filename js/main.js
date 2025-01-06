@@ -31,13 +31,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // WhatsApp Handler
+    function handleWhatsAppClick(event) {
+        event.preventDefault();
+        const message = "Welcome to GS Web! How can we help you today?";
+        const phoneNumber = "27827711674";
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Check if device is mobile
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // Open in WhatsApp app on mobile
+            window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+        } else {
+            // Open in popup on desktop
+            window.open(
+                `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
+                'WhatsApp',
+                'width=600,height=730'
+            );
+        }
+        return false;
+    }
+
     // Contact Options Event Listeners
     document.addEventListener('click', function(e) {
         if (e.target.id === 'whatsappButton') {
-            e.preventDefault();
-            const packageName = document.querySelector('.contact-options-popup .popup-content h4').textContent.replace('Choose Contact Method for ', '');
-            const message = `Hi, I'm interested in the ${packageName}. Can you provide more information?`;
-            window.open(`https://wa.me/27827711674?text=${encodeURIComponent(message)}`, '_blank');
+            handleWhatsAppClick(e);
         }
         
         if (e.target.id === 'emailButton') {

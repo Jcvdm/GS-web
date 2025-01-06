@@ -654,14 +654,143 @@ footer {
   font-size: 1.5rem;
 }
 
-/* Remove any background color changes on hover for all sections */
-section:hover, 
-.problem-solution:hover,
-.services:hover,
-.portfolio:hover,
-.testimonials:hover,
-.call-to-action:hover {
-  background-color: transparent;
+/* Problem Solution Animations */
+.problem {
+  animation: slideInLeft 1s ease-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.solution {
+  animation: slideInRight 1s ease-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Web Solutions Section */
+.web-solutions {
+  padding: 4rem 0;
+  background: var(--background);
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.solution-item {
+  background: var(--card);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.solution-item:hover {
+  transform: translateY(-5px);
+}
+
+.solution-item span {
+  color: var(--foreground);
+  font-size: 1.1rem;
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.example-item {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.example-item:hover {
+  transform: translateY(-5px);
+}
+
+.example-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.example-item h4 {
+  padding: 1.5rem;
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+/* Package Button Updates */
+.type-item .cta-button {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: auto;
+}
+
+.type-item .cta-button:hover {
+  background: var(--primary);
+  color: var(--card);
+}
+
+.type-item.package-card {
+  border: 1px solid var(--primary);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .examples-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .solution-item {
+    margin-bottom: 1rem;
+  }
 }
 
 /* WhatsApp Button */
@@ -670,48 +799,98 @@ section:hover,
   bottom: 20px;
   right: 20px;
   z-index: 1000;
-  background-color: #25D366;
+  text-decoration: none;
   width: 60px;
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-button-inner {
+  background-color: #25d366;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
 }
 
-.whatsapp-button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+.whatsapp-button:hover .whatsapp-button-inner {
+  transform: scale(1.1);
 }
 
-.whatsapp-button-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+.whatsapp-button::before {
+  content: "Chat with us!";
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
-.whatsapp-button svg {
-  width: 32px;
-  height: 32px;
+.whatsapp-button:hover::before {
+  opacity: 1;
 }
 
-/* Mobile adjustments for WhatsApp button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
   .whatsapp-button {
-    width: 50px;
-    height: 50px;
     bottom: 15px;
     right: 15px;
+    width: 50px;
+    height: 50px;
   }
 
-  .whatsapp-button svg {
-    width: 28px;
-    height: 28px;
+  .whatsapp-button::before {
+    display: none;
   }
+
+  .service-icon {
+    font-size: 2rem;
+  }
+}
+
+/* Service Icons */
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.service-item:hover .service-icon {
+  transform: scale(1.1);
+}
+
+.section-icon {
+  margin-right: 0.5rem;
+  color: var(--primary);
 }
 
 /* Call to Action Section */
@@ -984,7 +1163,6 @@ section:hover,
 @media (max-width: 768px) {
   .service-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
   
   .website-types {
@@ -1347,4 +1525,534 @@ section:hover,
   .contact-button {
     width: 100%;
   }
+}
+
+/* Services Section */
+.services {
+  padding: 4rem 0;
+  background: var(--background);
+}
+
+.service-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-item {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+}
+
+.service-item h4 {
+  color: var(--primary);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.service-item p {
+  color: var(--foreground);
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Responsive Design for Services */
+@media (max-width: 992px) {
+  .service-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .service-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-item {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Packages Section */
+.packages {
+  padding: 4rem 0;
+}
+
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.package-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+}
+
+.package-card h3 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.package-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.package-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  text-align: left;
+}
+
+.package-features li {
+  padding: 0.5rem 0;
+  color: #444;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.package-features li:before {
+  content: "✓";
+  color: #007bff;
+  position: absolute;
+  left: 0;
+}
+
+.package-card.basic {
+  border-top: 4px solid #28a745;
+}
+
+.package-card.advanced {
+  border-top: 4px solid #007bff;
+}
+
+.package-card.complete {
+  border-top: 4px solid #6610f2;
+}
+
+.cta-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .services-grid,
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card,
+  .package-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Packages Section */
+.packages {
+    padding: 4rem 0;
+    background: var(--background-alt);
+}
+
+.package-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.package-item {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.package-item:hover {
+    transform: translateY(-5px);
+}
+
+.package-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.package-header h4 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.package-subtitle {
+    color: var(--foreground);
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.package-description {
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+}
+
+.package-features {
+    margin-bottom: 1.5rem;
+}
+
+.package-features h5 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.package-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.package-features li {
+    padding: 0.5rem 0;
+    color: var(--foreground);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.package-features li:before {
+    content: "✓";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.package-platforms {
+    margin-bottom: 1.5rem;
+}
+
+.package-platforms h5 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.package-platforms p {
+    color: var(--foreground);
+    font-size: 0.9rem;
+}
+
+.package-cta {
+    text-align: center;
+}
+
+/* Package Cards */
+.package-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.package-card.featured {
+    border: 2px solid var(--primary);
+    transform: scale(1.02);
+}
+
+.package-card h4 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.package-subtitle {
+    color: var(--foreground);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.package-description {
+    color: var(--foreground);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.package-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.package-features li {
+    color: var(--foreground);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.package-features li:before {
+    content: "✓";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.platform-info {
+    font-size: 0.9rem;
+    color: var(--foreground);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Additional Services */
+.additional-services {
+    background: var(--background-alt);
+    padding: 4rem 0;
+}
+
+.additional-services .type-item {
+    text-align: left;
+    padding: 2rem;
+}
+
+.additional-services h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* Standalone Services */
+.standalone-services {
+    padding: 4rem 0;
+    background: var(--background-alt);
+}
+
+.standalone-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.standalone-item {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.standalone-item:hover {
+    transform: translateY(-5px);
+}
+
+.standalone-item h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.standalone-item p {
+    color: var(--foreground);
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .package-content,
+    .standalone-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .package-content,
+    .standalone-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .package-item,
+    .standalone-item {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Packages Section */
+.packages {
+    padding: 4rem 0;
+    background: var(--background-alt);
+}
+
+.website-types {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.type-item {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.type-item:hover {
+    transform: translateY(-5px);
+}
+
+.type-item h4 {
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.type-item p {
+    color: var(--foreground);
+    line-height: 1.6;
+}
+
+.package-subtitle {
+    color: var(--foreground);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.package-description {
+    margin-bottom: 1.5rem;
+}
+
+.package-features {
+    margin-top: auto;
+}
+
+.package-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.package-features li {
+    color: var(--foreground);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.package-features li:before {
+    content: "✓";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.platform-info {
+    font-size: 0.9rem;
+    color: var(--foreground);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.type-item.package-card.featured {
+    border: 2px solid var(--primary);
+    transform: scale(1.02);
+}
+
+.type-item.package-card.featured:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* Additional Services */
+.additional-services {
+    padding: 4rem 0;
+    background: var(--background);
+}
+
+.additional-services .type-item {
+    text-align: left;
+}
+
+.additional-services h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .website-types {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .type-item.package-card.featured {
+        transform: none;
+    }
+    
+    .type-item.package-card.featured:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .website-types {
+        grid-template-columns: 1fr;
+    }
+    
+    .type-item {
+        margin-bottom: 1rem;
+    }
+}
+
+.services h3,
+.packages h3,
+.additional-services h3 {
+  text-align: left;
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.services .container,
+.packages .container,
+.additional-services .container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
 }
