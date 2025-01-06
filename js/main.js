@@ -30,4 +30,22 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('open');
         });
     });
+
+    // Contact Options Event Listeners
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'whatsappButton') {
+            e.preventDefault();
+            const packageName = document.querySelector('.contact-options-popup .popup-content h4').textContent.replace('Choose Contact Method for ', '');
+            const message = `Hi, I'm interested in the ${packageName}. Can you provide more information?`;
+            window.open(`https://wa.me/27827711674?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        if (e.target.id === 'emailButton') {
+            e.preventDefault();
+            const packageName = document.querySelector('.contact-options-popup .popup-content h4').textContent.replace('Choose Contact Method for ', '');
+            const subject = encodeURIComponent(`Inquiry about ${packageName}`);
+            const body = encodeURIComponent(`Hi,\n\nI'm interested in the ${packageName}. Can you provide more information?\n\nBest regards`);
+            window.location.href = `mailto:growthsparkweb@gmail.com?subject=${subject}&body=${body}`;
+        }
+    });
 });
