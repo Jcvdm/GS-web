@@ -220,112 +220,102 @@ header nav a:hover::after {
 
 /* Hero Section */
 .hero {
-  position: relative;
-  width: 100vw;
-  height: 65vh;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
+    position: relative;
+    height: 90vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 4rem;
 }
 
-.hero:hover {
-  transform: none;
-  box-shadow: none;
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.9),
+        hsl(var(--secondary) / 0.9)
+    );
+    animation: gradientShift 12s ease infinite;
+    z-index: 0;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  padding: 3rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: var(--radius);
-  width: 95%;
-  max-width: 1000px;
-  margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: var(--radius);
+    backdrop-filter: blur(4px);
 }
 
-/* Terminal Typing Effect */
-@keyframes typing {
-  0% { 
-    width: 0;
-    border-right-color: white;
-  }
-  40%, 60% { 
-    width: 100%;
-    border-right-color: white;
-  }
-  90%, 100% { 
-    width: 0;
-    border-right-color: white;
-  }
+.dynamic-headline {
+    font-size: 3.5rem;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+    color: white;
+    min-height: 4.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.typing-text {
+    border-right: 3px solid white;
+    animation: blink 0.75s step-end infinite;
+    padding-right: 0.5rem;
+}
+
+/* Typing cursor blink animation */
 @keyframes blink {
-  from, to { border-color: transparent }
-  50% { border-color: white }
+    0%, 100% { 
+        border-color: transparent 
+    }
+    50% { 
+        border-color: white 
+    }
 }
 
-.hero-content h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  margin: 0 auto 2rem;
-  padding-bottom: 0.5rem;
-  font-family: 'Courier New', Courier, monospace;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid white;
-  width: 0;
-  max-width: 100%;
-  animation: 
-    typing 8s steps(40) infinite,
-    blink 1s step-end infinite;
-  display: inline-block;
+.hero-subtext {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Remove the underline animation since we have the typing effect */
-.hero-content h2::after {
-  display: none;
+.cta-button {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 1.25rem 2.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
 }
 
-.hero-content:hover h2 {
-  transform: none;
-}
-
-/* Style the paragraph to appear after typing */
-.hero-content p {
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  opacity: 1;
-  line-height: 1.6;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 0.9; }
-}
-
-.hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  border-radius: 0;
+.cta-button:hover {
+    background-color: transparent;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Sections */
@@ -598,6 +588,121 @@ footer {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+}
+
+/* Icon Grid Section */
+.icon-grid-section {
+    background: hsl(var(--background));
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.icon-grid-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: hsl(var(--primary));
+}
+
+.icon-grid-section .subtext {
+    font-size: 1.1rem;
+    color: hsl(var(--foreground));
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.icon-item {
+    background: hsl(var(--card));
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease;
+}
+
+.icon-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -10px hsl(var(--primary) / 0.2);
+}
+
+.icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: hsl(var(--primary) / 0.1);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-wrapper i {
+    font-size: 2rem;
+    color: hsl(var(--primary));
+    transition: all 0.3s ease;
+}
+
+.icon-item:hover .icon-wrapper i {
+    transform: scale(1.1);
+}
+
+.icon-item h4 {
+    font-size: 1.25rem;
+    color: hsl(var(--primary));
+    margin-bottom: 1rem;
+}
+
+.icon-item p {
+    color: hsl(var(--foreground));
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Animation for icons */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.icon-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsl(var(--primary) / 0.05);
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .icon-grid-section h2 {
+        font-size: 2rem;
+    }
+    
+    .icon-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .icon-item {
+        padding: 1.5rem;
+    }
 }
 
 /* Problem Solution Section */
@@ -2167,4 +2272,39 @@ footer {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 2rem;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        height: 80vh;
+        min-height: 600px;
+    }
+    
+    .dynamic-headline {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtext {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dynamic-headline {
+        font-size: 2rem;
+    }
+    
+    .hero-subtext {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+    }
 }

@@ -1,3 +1,56 @@
+// Icon Grid Interactions
+document.addEventListener('DOMContentLoaded', function() {
+    const iconItems = document.querySelectorAll('.icon-item');
+    
+    iconItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const icon = item.querySelector('.icon-wrapper i');
+            icon.style.animation = 'bounce 0.5s ease';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            const icon = item.querySelector('.icon-wrapper i');
+            icon.style.animation = '';
+        });
+    });
+});
+
+// Typing Animation
+const typingText = document.querySelector('.typing-text');
+const phrases = [
+    "AI Web Design. Fast Results.",
+    "Local Business. Digital Growth.",
+    "SEO Strategy. Proven Results."
+];
+let currentPhrase = 0;
+let currentLetter = 0;
+let isDeleting = false;
+
+function type() {
+    const fullText = phrases[currentPhrase];
+    
+    if (isDeleting) {
+        typingText.textContent = fullText.substring(0, currentLetter - 1);
+        currentLetter--;
+    } else {
+        typingText.textContent = fullText.substring(0, currentLetter + 1);
+        currentLetter++;
+    }
+
+    if (!isDeleting && currentLetter === fullText.length) {
+        isDeleting = true;
+        setTimeout(type, 2000); // Increased pause at end of phrase
+    } else if (isDeleting && currentLetter === 0) {
+        isDeleting = false;
+        currentPhrase = (currentPhrase + 1) % phrases.length;
+        setTimeout(type, 750); // Slightly longer pause between phrases
+    } else {
+        setTimeout(type, isDeleting ? 40 : 80); // Adjusted typing speeds
+    }
+}
+
+document.addEventListener('DOMContentLoaded', type);
+
 // Form submission handling
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
