@@ -31,29 +31,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // WhatsApp Handler
-    function handleWhatsAppClick(event) {
-        event.preventDefault();
+    // WhatsApp Popup Functionality
+    const whatsappPopup = document.querySelector('.whatsapp-popup');
+    const whatsappButton = document.querySelector('.whatsapp-button');
+    const closePopupBtn = document.getElementById('closeWhatsappPopup');
+
+    // Toggle popup visibility
+    function togglePopup() {
+        whatsappPopup.classList.toggle('show');
+    }
+
+    // Show popup when clicking WhatsApp button
+    whatsappButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        togglePopup();
+    });
+
+    // Close popup when clicking close button
+    closePopupBtn.addEventListener('click', togglePopup);
+
+    // WhatsApp Chat option
+    document.getElementById('whatsappChat').addEventListener('click', function() {
         const message = "Welcome to GS Web! How can we help you today?";
         const phoneNumber = "27827711674";
         const encodedMessage = encodeURIComponent(message);
-        
-        // Check if device is mobile
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
         if (isMobile) {
-            // Open in WhatsApp app on mobile
             window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
         } else {
-            // Open in popup on desktop
             window.open(
                 `https://wa.me/${phoneNumber}?text=${encodedMessage}`,
                 'WhatsApp',
                 'width=600,height=730'
             );
         }
-        return false;
-    }
+        togglePopup();
+    });
+
+    // WhatsApp Call option
+    document.getElementById('whatsappCall').addEventListener('click', function() {
+        window.location.href = 'tel:+27827711674';
+        togglePopup();
+    });
+
+    // Close popup when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!whatsappPopup.contains(e.target) && 
+            !whatsappButton.contains(e.target) && 
+            whatsappPopup.classList.contains('show')) {
+            togglePopup();
+        }
+    });
 
     // Contact Options Event Listeners
     document.addEventListener('click', function(e) {
