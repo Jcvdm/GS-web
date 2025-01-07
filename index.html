@@ -12,15 +12,18 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/growthspark-og.jpg">
     <link rel="canonical" href="https://growthsparkweb.netlify.app">
-    <meta name="description" content="GS Web offers professional web design, SEO & GMB optimization services in Cape Town. Boost your online presence with our expert solutions.">
-    <title>GS Web - AI-Powered Web Design & SEO Services | Cape Town</title>
+    <title aria-label="GS Web - AI Powered Web Design and SEO Services in Cape Town">GS Web | AI-Powered Web Design & SEO Services in Cape Town</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <!-- Removed reference to style.css -->
 </head>
 <body>
     <header class="top-bar">
         <div class="container">
-            <h1>GS Web</h1>
+            <div class="logo-wrapper">
+                <i class="fas fa-rocket logo-icon"></i>
+                <h1>GS Web</h1>
+            </div>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -28,29 +31,40 @@
             </button>
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#services">SERVICES</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
+                    <li>
+                        <a href="#packages">
+                            <i class="fas fa-cogs nav-icon"></i>
+                            SERVICES
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact">
+                            <i class="fas fa-envelope nav-icon"></i>
+                            CONTACT
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <main>
 
     <section class="gmb-seo-hero">
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Boost Your Online Presence</h1>
-                    <p>AI-powered Google My Business Optimization & SEO Services to Boost Your Local Visibility and Leads</p>
-                    <a href="#services" class="cta-button hero-cta">Explore Our Services</a>
+                    <p>AI-powered Google My Business optimization & SEO services to boost local visibility and generate leads</p>
                 </div>
                 <div class="hero-images">
                     <div class="image-column">
                         <img src="images/GMB.JPG" alt="Google My Business Optimization" class="hero-image">
-                        <p>GMB Optimization</p>
+                        <p class="image-caption">GMB Optimization</p>
                     </div>
                     <div class="image-column">
                         <img src="images/SEO.JPG" alt="SEO Services" class="hero-image">
-                        <p>SEO Services</p>
+                        <p class="image-caption">SEO Services</p>
                     </div>
                 </div>
             </div>
@@ -62,7 +76,7 @@
     <section class="icon-grid-section">
         <div class="container">
             <h2>Your Complete Online Solution</h2>
-            <p class="subtext">AI-Driven Web Design, SEO & GMB Optimization to Increase Traffic, Leads & Sales</p>
+            <p class="subtext">AI-driven web design, SEO & GMB optimization to increase website traffic, generate leads & boost sales</p>
             
             <div class="icon-grid">
                 <div class="icon-item">
@@ -98,7 +112,6 @@
                 </div>
             </div>
             
-            <a href="#services" class="cta-button">Explore Our Services</a>
         </div>
     </section>
 
@@ -182,7 +195,7 @@
                     <div class="package-features">
                         <ul>
                             <li>Multi-Page Website (5-8 Pages)</li>
-                            <li>AI-Optimized Responsive Design & Layouts</li>
+                            <li><strong>AI-optimized</strong> responsive website design & layouts</li>
                             <li>Social Media Integration</li>
                             <li>Comprehensive SEO Strategy</li>
                             <li>Enhanced Google My Business Management</li>
@@ -242,6 +255,8 @@
             </form>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer>

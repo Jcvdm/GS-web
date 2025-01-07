@@ -72,16 +72,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = document.querySelectorAll('.nav-menu a');
 
     menuBtn.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
         menuBtn.classList.toggle('open');
-        navMenu.classList.toggle('open');
     });
 
-    // Close menu when clicking a link
+    // Close menu when clicking outside or on a link
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
             menuBtn.classList.remove('open');
-            navMenu.classList.remove('open');
         });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            menuBtn.classList.remove('open');
+        }
     });
 
     // WhatsApp Popup Functionality
