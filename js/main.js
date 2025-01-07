@@ -71,24 +71,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const menuLinks = document.querySelectorAll('.nav-menu a');
 
+    // Mobile menu toggle with animation
     menuBtn.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
+        const isOpen = navMenu.classList.toggle('active');
         menuBtn.classList.toggle('open');
+        
+        // Toggle body scroll lock
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        
+        // Add/remove backdrop
+        if (isOpen) {
+            const backdrop = document.createElement('div');
+            backdrop.className = 'mobile-backdrop';
+            document.body.appendChild(backdrop);
+            
+            backdrop.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuBtn.classList.remove('open');
+                document.body.style.overflow = '';
+                backdrop.remove();
+            });
+        } else {
+            const backdrop = document.querySelector('.mobile-backdrop');
+            if (backdrop) backdrop.remove();
+        }
     });
 
-    // Close menu when clicking outside or on a link
+    // Close menu when clicking on links
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
             menuBtn.classList.remove('open');
+            document.body.style.overflow = '';
+            const backdrop = document.querySelector('.mobile-backdrop');
+            if (backdrop) backdrop.remove();
         });
-    });
-
-    document.addEventListener('click', function(e) {
-        if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            menuBtn.classList.remove('open');
-        }
     });
 
     // WhatsApp Popup Functionality

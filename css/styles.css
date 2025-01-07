@@ -1,5 +1,7 @@
 @layer base {
   :root {
+    --border-color: hsl(240, 3.7%, 15.9%);
+    --border-width: 1px;
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
@@ -78,6 +80,7 @@ body {
 /* Add this new rule to handle fixed header spacing */
 main {
   padding-top: 70px; /* Match header height */
+  min-height: calc(100vh - 70px); /* Ensure content fills viewport */
 }
 
 @media (max-width: 768px) {
@@ -96,13 +99,13 @@ main {
 
 /* Header */
 header.top-bar {
-    width: 100vw; /* Full viewport width */
-    margin-left: calc(-50vw + 50%); /* Center align full width */
-    padding: 0;
-    position: sticky;
+    width: 100vw;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    border-bottom: 1px solid hsl(var(--border)/0.2);
+    border-bottom: var(--border-width) solid var(--border-color);
     backdrop-filter: blur(10px);
     background-color: hsla(var(--background)/0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -110,13 +113,16 @@ header.top-bar {
 }
 
 header .container {
-    max-width: 1400px; /* Keep your max width */
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 1rem;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: hsla(var(--background), 0.95);
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
 }
 
 header .logo-wrapper,
@@ -749,7 +755,7 @@ footer {
   padding: 2rem;
   background-color: hsl(var(--card));
   border-radius: var(--radius);
-  border: 1px solid hsl(var(--border));
+  border: var(--border-width) solid var(--border-color);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -1471,6 +1477,18 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Mobile Backdrop */
+.mobile-backdrop {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 999;
 }
 
 /* Mobile Responsive Popup */
@@ -2280,7 +2298,7 @@ footer {
 
 /* Package Cards */
 .package-card {
-    background: var(--card);
+    background: hsl(var(--card));
     border-radius: var(--radius);
     padding: 2rem;
     text-align: left;
@@ -2288,10 +2306,23 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -10px hsl(var(--primary) / 0.2);
 }
 
 .package-card.featured {
-    border: 2px solid var(--primary);
+    border: 1px solid hsl(var(--border)); /* Update border */
     transform: scale(1.02);
 }
 
@@ -2493,12 +2524,13 @@ footer {
 }
 
 .type-item.package-card.featured {
-    border: 2px solid var(--primary);
+    border: 2px solid hsl(var(--primary));
     transform: scale(1.02);
 }
 
 .type-item.package-card.featured:hover {
     transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px -10px hsl(var(--primary) / 0.3);
 }
 
 /* Additional Services */
