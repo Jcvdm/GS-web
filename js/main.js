@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // WhatsApp Chat option
     document.getElementById('whatsappChat').addEventListener('click', function() {
         const message = "Welcome to GS Web! How can we help you today?";
-        const phoneNumber = "27827711674";
+        const phoneNumber = "27639071383";
         const encodedMessage = encodeURIComponent(message);
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // WhatsApp Call option
     document.getElementById('whatsappCall').addEventListener('click', function() {
-        window.location.href = 'tel:+27827711674';
+        window.location.href = 'tel:+27639071383';
         togglePopup();
     });
 
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const packageName = document.querySelector('.contact-options-popup .popup-content h4').textContent.replace('Choose Contact Method for ', '');
             const subject = encodeURIComponent(`Inquiry about ${packageName}`);
             const body = encodeURIComponent(`Hi,\n\nI'm interested in the ${packageName}. Can you provide more information?\n\nBest regards`);
-            window.location.href = `mailto:growthsparkweb@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:admin@gsweb.co.za?subject=${subject}&body=${body}`;
         }
     });
 });
