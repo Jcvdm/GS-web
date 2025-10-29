@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.id === 'whatsappButton') {
             handleWhatsAppClick(e);
         }
-        
+
         if (e.target.id === 'emailButton') {
             e.preventDefault();
             const packageName = document.querySelector('.contact-options-popup .popup-content h4').textContent.replace('Choose Contact Method for ', '');
@@ -174,5 +174,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const body = encodeURIComponent(`Hi,\n\nI'm interested in the ${packageName}. Can you provide more information?\n\nBest regards`);
             window.location.href = `mailto:admin@gsweb.co.za?subject=${subject}&body=${body}`;
         }
+    });
+
+    // FAQ Accordion Functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const faqItem = this.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            faqItem.classList.toggle('active');
+        });
     });
 });

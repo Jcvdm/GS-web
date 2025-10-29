@@ -863,6 +863,370 @@ footer {
     }
 }
 
+/* Hero Price Highlight */
+.hero-price-highlight {
+  margin: 1.5rem 0;
+}
+
+.price-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.2));
+  border: 1px solid hsl(var(--primary) / 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: calc(var(--radius) * 2);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: hsl(var(--primary));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Pricing Section */
+.pricing-section {
+  position: relative;
+  z-index: 2;
+  background-color: hsl(var(--background));
+  padding: 5rem 2rem;
+  width: 100%;
+}
+
+.pricing-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: hsl(var(--foreground));
+}
+
+.pricing-section .subtext {
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.pricing-card {
+  background-color: hsl(var(--card));
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.pricing-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.pricing-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.pricing-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 40px hsl(var(--primary) / 0.15);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.pricing-card.popular {
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 30px hsl(var(--primary) / 0.2);
+  transform: scale(1.05);
+}
+
+.pricing-card.popular:hover {
+  transform: scale(1.05) translateY(-8px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  color: hsl(var(--primary-foreground));
+  padding: 0.4rem 1rem;
+  border-radius: calc(var(--radius) * 2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.package-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.package-header h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: hsl(var(--foreground));
+}
+
+.package-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.package-price .currency {
+  font-size: 1.5rem;
+  color: hsl(var(--muted-foreground));
+  font-weight: 600;
+}
+
+.package-price .amount {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: hsl(var(--primary));
+  line-height: 1;
+}
+
+.package-price .period {
+  font-size: 1rem;
+  color: hsl(var(--muted-foreground));
+  margin-left: 0.3rem;
+}
+
+.monthly-option {
+  font-size: 0.95rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+
+.package-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.package-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  color: hsl(var(--foreground));
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.package-features li i {
+  color: hsl(var(--primary));
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.package-cta {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: transparent;
+  border: 2px solid hsl(var(--primary));
+  color: hsl(var(--primary));
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.package-cta:hover {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px hsl(var(--primary) / 0.3);
+}
+
+.pricing-card.popular .package-cta {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.pricing-card.popular .package-cta:hover {
+  background-color: hsl(var(--primary) / 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px hsl(var(--primary) / 0.4);
+}
+
+.pricing-note {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: hsl(var(--card) / 0.5);
+  border-radius: var(--radius);
+  border: 1px dashed hsl(var(--border));
+}
+
+.pricing-note p {
+  color: hsl(var(--muted-foreground));
+  font-size: 1rem;
+  margin: 0;
+}
+
+.pricing-note i {
+  color: hsl(var(--primary));
+  margin-right: 0.5rem;
+}
+
+.pricing-note a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.pricing-note a:hover {
+  color: hsl(var(--primary) / 0.8);
+}
+
+/* FAQ Section */
+.faq-section {
+  position: relative;
+  z-index: 2;
+  background-color: hsl(var(--background));
+  padding: 5rem 2rem;
+  width: 100%;
+}
+
+.faq-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: hsl(var(--foreground));
+}
+
+.faq-section .subtext {
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  background-color: hsl(var(--card));
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.2s; }
+.faq-item:nth-child(3) { animation-delay: 0.3s; }
+.faq-item:nth-child(4) { animation-delay: 0.4s; }
+.faq-item:nth-child(5) { animation-delay: 0.5s; }
+.faq-item:nth-child(6) { animation-delay: 0.6s; }
+
+.faq-question {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: hsl(var(--foreground));
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  color: hsl(var(--primary));
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+  color: hsl(var(--primary));
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.faq-answer p {
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive - Pricing and FAQ */
+@media (max-width: 768px) {
+  .pricing-section h2,
+  .faq-section h2 {
+    font-size: 2rem;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card.popular {
+    transform: scale(1);
+  }
+
+  .pricing-card.popular:hover {
+    transform: translateY(-8px);
+  }
+
+  .package-price .amount {
+    font-size: 2.8rem;
+  }
+
+  .price-badge {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
 /* Problem Solution Section */
 .problem-solution {
   position: relative;
@@ -985,7 +1349,7 @@ footer {
 
 .examples-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin-top: 4rem;
 }
@@ -1003,6 +1367,7 @@ footer {
 .example-item:nth-child(1) { animation-delay: 0.1s; }
 .example-item:nth-child(2) { animation-delay: 0.2s; }
 .example-item:nth-child(3) { animation-delay: 0.3s; }
+.example-item:nth-child(4) { animation-delay: 0.4s; }
 
 .example-item:hover {
   transform: translateY(-5px);
@@ -1046,6 +1411,12 @@ footer {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .examples-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 992px) {
   .examples-grid {
     grid-template-columns: repeat(2, 1fr);
